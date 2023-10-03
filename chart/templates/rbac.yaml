@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "argocd-custom-exporter.serviceAccountName" . }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "argocd-custom-exporter.fullname" . }}-role
+rules:
+- apiGroups: ["argoproj.io"]
+  resources: ["applications"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "argocd-custom-exporter.fullname" . }}-rolebinding
+subjects:
+- kind: ServiceAccount
+  name: {{ include "argocd-custom-exporter.serviceAccountName" . }}
+roleRef:
+  kind: Role
+  name: {{ include "argocd-custom-exporter.fullname" . }}-role
+  apiGroup: rbac.authorization.k8s.io

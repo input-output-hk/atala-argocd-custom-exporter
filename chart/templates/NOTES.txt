@@ -1,0 +1,20 @@
+Thank you for installing the `argocd-custom-exporter` Helm chart!
+
+1. To verify that the Deployment has been created:
+
+kubectl get deployment -n {{ .Release.Namespace }} {{ include "argocd-custom-exporter.fullname" . }}-deployment
+
+2. Verify that the Service has been set up:
+
+kubectl get service -n {{ .Release.Namespace }} {{ include "argocd-custom-exporter.fullname" . }}
+
+3. Verify that the ServiceMonitor has been created:
+
+kubectl get servicemonitor -n {{ .Release.Namespace }} {{ include "argocd-custom-exporter.fullname" . }}
+
+4. To interact with the exporter locally:
+
+kubectl port-forward deployment/{{ include "argocd-custom-exporter.fullname" . }}-deployment 8080:8080 -n {{ .Release.Namespace }}
+Then open a browser or use a tool like 'curl' to access: http://localhost:8080/_system/metrics
+
+Note: Make sure to configure your Prometheus instance to discover this ServiceMonitor if it's not set up to do so automatically.

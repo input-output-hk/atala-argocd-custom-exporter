@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "argocd-custom-exporter.fullname" . }}
+  labels:
+    {{- include "argocd-custom-exporter.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "argocd-custom-exporter.selectorLabels" . | nindent 6 }}
+  endpoints:
+  - port: http
+    path: {{ .Values.serviceMonitor.path }}
+    scheme: {{ .Values.serviceMonitor.scheme }}
+    interval: {{ .Values.serviceMonitor.interval }}
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}

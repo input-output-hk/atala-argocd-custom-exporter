@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "argocd-custom-exporter.fullname" . }}-deployment
+  labels:
+    {{- include "argocd-custom-exporter.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "argocd-custom-exporter.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "argocd-custom-exporter.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "argocd-custom-exporter.serviceAccountName" . }}
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ default "bakithesnake/argocd-custom-exporter" .Values.image.repository }}:{{ default .Chart.Version .Values.image.tag }}"
+        ports:
+        - containerPort: {{ .Values.service.port }}
+          protocol: TCP
+        env:
+        - name: POLL_INTERVAL
+          value: "{{ .Values.pollInterval }}"
