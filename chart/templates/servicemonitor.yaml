@@ -6,7 +6,7 @@ metadata:
     {{- include "argocd-custom-exporter.labels" . | nindent 4 }}
     {{- with .Values.serviceMonitor.labels }}
     {{- range $key, $value := . }}
-    {{ $key }}: {{ quote $value | quote }} # Add each label from values.yaml
+    {{ $key }}: {{ quote $value }}
     {{- end }}
     {{- end }}
 spec:
