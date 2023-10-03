@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  IMAGE_NAME: bakithesnake/argocd-custom-exporter
+
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
@@ -22,12 +25,12 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
 #      - name: Extract Helm chart version
 #        id: get_chart_version
 #        run: |
-#          CHART_VERSION=$(grep 'version:' path-to-your-chart/Chart.yaml | awk '{print $2}')
+#          CHART_VERSION=$(grep 'version:' chart/Chart.yaml | awk '{print $2}')
 #          echo "Chart version is $CHART_VERSION"
 #          echo "::set-output name=CHART_VERSION::$CHART_VERSION"
 
@@ -47,7 +50,7 @@ jobs:
 
       - name: Update Helm chart version
         run: |
-        sed -i "s/version: .*/version: ${{ steps.get_version.outputs.VERSION }}/" chart/Chart.yaml
+          sed -i "s/version: .*/version: ${{ steps.get_version.outputs.VERSION }}/" chart/Chart.yaml
 
 
       # Build and push Docker image
@@ -57,13 +60,13 @@ jobs:
         with:
           context: .
           push: true
-          tags: tags: bakithesnake/argocd-custom-exporter:latest, bakithesnake/argocd-custom-exporter:${{ steps.get_chart_version.outputs.CHART_VERSION }}
+          tags: ${{ env.IMAGE_NAME }}:latest, ${{ env.IMAGE_NAME }}:${{ steps.get_version.outputs.VERSION }}
 
 
       # Package Helm chart with the new version
       - name: Package Helm Chart
         run: |
-          helm package path-to-your-chart-directory
+          helm package chart
 
       # Helm repo index
       - name: Update Helm repo index
@@ -72,12 +75,12 @@ jobs:
           helm repo index .
 
       # Push changes back to GitHub
-      - name: Commit and push
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
           git commit -m "Update Helm chart and repo index"
-          git push
-
-      # NOTE: For pushing back to GitHub, you'd likely need a PAT (Personal Access Token) to handle authentication.
+          git push https://$GH_PAT@github.com/free-devops/argocd-custom-exporter.git HEAD:main
+          env:
+            GH_PAT: ${{ secrets.GH_PAT }}    
