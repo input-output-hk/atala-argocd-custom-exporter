@@ -3,7 +3,17 @@ entries:
   argocd-custom-exporter:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-03T18:40:33.132972103Z"
+    created: "2023-10-06T14:49:41.641474935Z"
+    description: A Helm chart for Kubernetes
+    digest: c03e9a0981130c07655d67e5cda53dc992833e60981c1ee460ebaddf5b457958
+    name: argocd-custom-exporter
+    type: application
+    urls:
+    - argocd-custom-exporter-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-10-06T14:49:41.641186128Z"
     description: A Helm chart for Kubernetes
     digest: c01868abc31c8b9dc30b9ce7742e9089251593502c39a0b9a46008d205109fae
     name: argocd-custom-exporter
@@ -13,7 +23,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-03T18:40:33.132695905Z"
+    created: "2023-10-06T14:49:41.64085702Z"
     description: A Helm chart for Kubernetes
     digest: a3c1db77ec13ab150ec09ffed36aece003180643307e64611c8817a5edaa74da
     name: argocd-custom-exporter
@@ -23,7 +33,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-03T18:40:33.132404907Z"
+    created: "2023-10-06T14:49:41.640564213Z"
     description: A Helm chart for Kubernetes
     digest: 22d9e568f58244b82375fc5dac8f6550ab37e847f492b182b98cdb88519d8aee
     name: argocd-custom-exporter
@@ -33,7 +43,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-03T18:40:33.13210271Z"
+    created: "2023-10-06T14:49:41.640250406Z"
     description: A Helm chart for Kubernetes
     digest: 2eaab85bfd732edc07c7115c74e6a0a8688d8baa01070c571768b09faa45f3e7
     name: argocd-custom-exporter
@@ -43,7 +53,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-03T18:40:33.131784712Z"
+    created: "2023-10-06T14:49:41.639924698Z"
     description: A Helm chart for Kubernetes
     digest: 5569cb3de213b65051ecf99140c066f67d2e233c003a15e16ab21d3d67e02be2
     name: argocd-custom-exporter
@@ -51,4 +61,4 @@ entries:
     urls:
     - argocd-custom-exporter-0.1.1.tgz
     version: 0.1.1
-generated: "2023-10-03T18:40:33.131255316Z"
+generated: "2023-10-06T14:49:41.639428386Z"
