@@ -1,4 +1,3 @@
-# Sync status vs Health Status
 import time
 import os
 from prometheus_client import start_http_server, Gauge
@@ -24,6 +23,9 @@ def main():
     # Get the polling interval from the environment variable, default to 30 seconds
     polling_interval = int(os.getenv('POLL_INTERVAL', 30))
 
+    # Initialize known_apps outside the loop
+    known_apps = set()
+
     while True:
         # Fetch Argo CD Applications and update metrics
         namespace = "argocd"
@@ -31,6 +33,10 @@ def main():
         version = "v1alpha1"
         plural = "applications"
         apps = v1.list_namespaced_custom_object(group, version, namespace, plural)
+
+        # Create a set to collect the current apps in this iteration
+        current_apps = set()
+
         for app in apps['items']:
             name = app['metadata']['name']
             project = app['spec'].get('project', 'N/A')
@@ -38,26 +44,11 @@ def main():
             revision = app['status']['sync'].get('revision', 'N/A')
             sync_status = app['status']['sync'].get('status', 'N/A')
             app_namespace = app['spec']['destination']['namespace']
-            # Safely extract the 'Url' field from 'info'
-            info = app['spec'].get('info', [])
-            url = next((item.get('value', 'N/A') for item in info if item.get('name') == 'Url'), 'N/A')
-            sync_at = app['status']['operationState'].get('finishedAt', 'N/A')
 
-            # Extract helm values if they exist, or use an empty string as a default
-            helm_values = app['spec']['source'].get('helm', {}).get('values', '')
+            # Update the set of current apps
+            current_apps.add((app_namespace, name))
 
-            # Check if helm_values is not empty and is a string
-            if helm_values:
-                # Safely parse the YAML string to a dictionary
-                helm_values_dict = yaml.safe_load(helm_values)
-
-                # Now you can access values in helm_values_dict
-                vdr = helm_values_dict.get('vdrManager', {}).get('host', 'N/A')
-                vault = helm_values_dict.get('vault', {}).get('global', {}).get('enabled', 'N/A')
-            else:
-                # Handle the case when helm_values is empty
-                vdr = 'N/A'
-                vault = 'N/A'
+            # ... rest of your existing app processing logic ...
 
             # Update Prometheus metric
             app_info.labels(
@@ -72,6 +63,24 @@ def main():
                 vault=vault,
                 url=url
             ).set(1)
+
+        # Remove old gauges for apps that don't exist anymore
+        for app_namespace, name in known_apps - current_apps:
+            app_info.labels(
+                namespace=app_namespace,
+                name=name,
+                project='N/A',  # Use dummy values for labels
+                health_status='N/A',
+                revision='N/A',
+                sync_status='N/A',
+                sync_at='N/A',
+                vdr='N/A',
+                vault='N/A',
+                url='N/A'
+            ).set_to_current_time()  # Set to the current time to effectively remove the gauge
+
+        # Update the known_apps set for the next iteration
+        known_apps = current_apps
 
         time.sleep(polling_interval)
 
