@@ -3,7 +3,17 @@ entries:
   argocd-custom-exporter:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-10T23:22:10.199003351Z"
+    created: "2023-10-10T23:33:47.120506598Z"
+    description: A Helm chart for Kubernetes
+    digest: 0116ad947cab06483276863d6ce9d51a99f74d688a0d36af161a67a4be64c807
+    name: argocd-custom-exporter
+    type: application
+    urls:
+    - argocd-custom-exporter-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-10-10T23:33:47.120152284Z"
     description: A Helm chart for Kubernetes
     digest: c44837b74b35bb89582021363dbdd094505d4c2a3a404c09bbe504a4d69c100f
     name: argocd-custom-exporter
@@ -13,7 +23,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-10T23:22:10.198683246Z"
+    created: "2023-10-10T23:33:47.11980187Z"
     description: A Helm chart for Kubernetes
     digest: 224a73bd38a3b0c4590673eb78eac2d5ab6b8790b367442a3c2233c08ac82b82
     name: argocd-custom-exporter
@@ -23,7 +33,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-10T23:22:10.198365242Z"
+    created: "2023-10-10T23:33:47.119450455Z"
     description: A Helm chart for Kubernetes
     digest: c03e9a0981130c07655d67e5cda53dc992833e60981c1ee460ebaddf5b457958
     name: argocd-custom-exporter
@@ -33,7 +43,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-10T23:22:10.198024837Z"
+    created: "2023-10-10T23:33:47.119044239Z"
     description: A Helm chart for Kubernetes
     digest: c01868abc31c8b9dc30b9ce7742e9089251593502c39a0b9a46008d205109fae
     name: argocd-custom-exporter
@@ -43,7 +53,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-10T23:22:10.19748683Z"
+    created: "2023-10-10T23:33:47.118633622Z"
     description: A Helm chart for Kubernetes
     digest: a3c1db77ec13ab150ec09ffed36aece003180643307e64611c8817a5edaa74da
     name: argocd-custom-exporter
@@ -53,7 +63,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-10T23:22:10.197038024Z"
+    created: "2023-10-10T23:33:47.118245007Z"
     description: A Helm chart for Kubernetes
     digest: 22d9e568f58244b82375fc5dac8f6550ab37e847f492b182b98cdb88519d8aee
     name: argocd-custom-exporter
@@ -63,7 +73,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-10T23:22:10.196645918Z"
+    created: "2023-10-10T23:33:47.11784389Z"
     description: A Helm chart for Kubernetes
     digest: 2eaab85bfd732edc07c7115c74e6a0a8688d8baa01070c571768b09faa45f3e7
     name: argocd-custom-exporter
@@ -73,7 +83,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-10T23:22:10.195403001Z"
+    created: "2023-10-10T23:33:47.117431474Z"
     description: A Helm chart for Kubernetes
     digest: 5569cb3de213b65051ecf99140c066f67d2e233c003a15e16ab21d3d67e02be2
     name: argocd-custom-exporter
@@ -81,4 +91,4 @@ entries:
     urls:
     - argocd-custom-exporter-0.1.1.tgz
     version: 0.1.1
-generated: "2023-10-10T23:22:10.19456389Z"
+generated: "2023-10-10T23:33:47.116824849Z"
