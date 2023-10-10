@@ -12,7 +12,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      {{- include "argocd-custom-exporter.selectorLabels" . | nindent 6 }}
+      {{- include "argocd-custom-exporter.labels" . | nindent 6 }}
   endpoints:
   - port: http
     path: {{ .Values.serviceMonitor.path }}
