@@ -14,7 +14,7 @@ spec:
     matchLabels:
       {{- include "argocd-custom-exporter.labels" . | nindent 6 }}
   endpoints:
-  - port: http
+  - port: {{ include "argocd-custom-exporter.fullname" . }}
     path: {{ .Values.serviceMonitor.path }}
     scheme: {{ .Values.serviceMonitor.scheme }}
     interval: {{ .Values.serviceMonitor.interval }}
