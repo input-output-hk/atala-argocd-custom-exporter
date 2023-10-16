@@ -71,8 +71,7 @@ def main():
         app_info = Gauge(
             'argocd_application_info',
             'Information about ArgoCD Applications',
-            ['namespace', 'name', 'project', 'revision', 'sync_status', 'health_status', 'sync_at', 'url', 'vault',
-             'vdr']
+            ['namespace', 'name', 'project', 'revision', 'sync_status', 'health_status', 'sync_at', 'url', 'vault', 'vdr']
         )
         start_http_server(8080)
         logging.info('HTTP server started on port 8080.')
@@ -80,16 +79,23 @@ def main():
         polling_interval = int(os.getenv('POLL_INTERVAL', 30))
         logging.info(f'Set polling interval to {polling_interval} seconds.')
 
+        app_metrics = {}  # Dictionary to track metrics for each application
+
         while True:
             apps = fetch_argo_cd_applications(v1)
             for app in apps:
                 info = extract_app_info(app)
-                app_info.labels(**info).set(1)
+                key = tuple(info.values())  # Create a unique key for each application
+
+                if key not in app_metrics:
+                    app_metrics[key] = app_info.labels(**info)
+                app_metrics[key].set(1)
             logging.info(f'Updated metrics for {len(apps)} applications.')
             time.sleep(polling_interval)
 
     except Exception as e:
         logging.error(f'Error occurred: {e}')
+
 
 
 if __name__ == '__main__':
