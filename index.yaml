@@ -3,7 +3,17 @@ entries:
   argocd-custom-exporter:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.930005616Z"
+    created: "2023-10-17T18:45:24.799956846Z"
+    description: A Helm chart for Kubernetes
+    digest: 826f95ada519b820ee60757889ad59cb1b74faf95d97be4b68f6ca6f396cfa0c
+    name: argocd-custom-exporter
+    type: application
+    urls:
+    - argocd-custom-exporter-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-10-17T18:45:24.799592142Z"
     description: A Helm chart for Kubernetes
     digest: cb8542ce1169af1bd14f6efa2ce72b19a05bbd7aeaf2fed006c923efe2ee98c1
     name: argocd-custom-exporter
@@ -13,7 +23,7 @@ entries:
     version: 0.1.11
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.929242807Z"
+    created: "2023-10-17T18:45:24.799193537Z"
     description: A Helm chart for Kubernetes
     digest: af8d92458c750376ae0b1d992ee64524b5a04078cef9747c78eb0778e145456a
     name: argocd-custom-exporter
@@ -23,7 +33,7 @@ entries:
     version: 0.1.10
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.933568758Z"
+    created: "2023-10-17T18:45:24.802996984Z"
     description: A Helm chart for Kubernetes
     digest: 0116ad947cab06483276863d6ce9d51a99f74d688a0d36af161a67a4be64c807
     name: argocd-custom-exporter
@@ -33,7 +43,7 @@ entries:
     version: 0.1.9
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.933222154Z"
+    created: "2023-10-17T18:45:24.802649479Z"
     description: A Helm chart for Kubernetes
     digest: c44837b74b35bb89582021363dbdd094505d4c2a3a404c09bbe504a4d69c100f
     name: argocd-custom-exporter
@@ -43,7 +53,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.93289325Z"
+    created: "2023-10-17T18:45:24.802131373Z"
     description: A Helm chart for Kubernetes
     digest: 224a73bd38a3b0c4590673eb78eac2d5ab6b8790b367442a3c2233c08ac82b82
     name: argocd-custom-exporter
@@ -53,7 +63,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.932454345Z"
+    created: "2023-10-17T18:45:24.801781269Z"
     description: A Helm chart for Kubernetes
     digest: c03e9a0981130c07655d67e5cda53dc992833e60981c1ee460ebaddf5b457958
     name: argocd-custom-exporter
@@ -63,7 +73,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.931694536Z"
+    created: "2023-10-17T18:45:24.801424264Z"
     description: A Helm chart for Kubernetes
     digest: c01868abc31c8b9dc30b9ce7742e9089251593502c39a0b9a46008d205109fae
     name: argocd-custom-exporter
@@ -73,7 +83,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.931305631Z"
+    created: "2023-10-17T18:45:24.80105186Z"
     description: A Helm chart for Kubernetes
     digest: a3c1db77ec13ab150ec09ffed36aece003180643307e64611c8817a5edaa74da
     name: argocd-custom-exporter
@@ -83,7 +93,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.930877626Z"
+    created: "2023-10-17T18:45:24.800684555Z"
     description: A Helm chart for Kubernetes
     digest: 22d9e568f58244b82375fc5dac8f6550ab37e847f492b182b98cdb88519d8aee
     name: argocd-custom-exporter
@@ -93,7 +103,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.930486622Z"
+    created: "2023-10-17T18:45:24.800326751Z"
     description: A Helm chart for Kubernetes
     digest: 2eaab85bfd732edc07c7115c74e6a0a8688d8baa01070c571768b09faa45f3e7
     name: argocd-custom-exporter
@@ -103,7 +113,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-10-16T09:33:03.928909203Z"
+    created: "2023-10-17T18:45:24.798763131Z"
     description: A Helm chart for Kubernetes
     digest: 5569cb3de213b65051ecf99140c066f67d2e233c003a15e16ab21d3d67e02be2
     name: argocd-custom-exporter
@@ -111,4 +121,4 @@ entries:
     urls:
     - argocd-custom-exporter-0.1.1.tgz
     version: 0.1.1
-generated: "2023-10-16T09:33:03.92781449Z"
+generated: "2023-10-17T18:45:24.796810807Z"
