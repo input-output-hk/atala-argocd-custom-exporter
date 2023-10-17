@@ -35,7 +35,12 @@ def extract_app_info(app):
 
         info = app['spec'].get('info', [])
         url = next((item.get('value', 'N/A') for item in info if item.get('name') == 'Url'), 'N/A')
-        sync_at = app['status']['operationState'].get('finishedAt', 'N/A')
+
+        # Check if 'operationState' is present before extracting 'finishedAt'
+        if 'operationState' in app['status']:
+            sync_at = app['status']['operationState'].get('finishedAt', 'N/A')
+        else:
+            sync_at = 'N/A'
 
         helm_values = app['spec']['source'].get('helm', {}).get('values', '')
         if helm_values:
@@ -63,6 +68,7 @@ def extract_app_info(app):
         logging.error(
             f'Error extracting information for application: {app["metadata"].get("name", "UNKNOWN")}. Error: {e}')
         return {}
+
 
 
 def main():
