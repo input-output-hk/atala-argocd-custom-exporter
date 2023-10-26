@@ -36,7 +36,6 @@ def extract_app_info(app):
         info = app['spec'].get('info', [])
         url = next((item.get('value', 'N/A') for item in info if item.get('name') == 'Url'), 'N/A')
 
-        # Check if 'operationState' is present before extracting 'finishedAt'
         if 'operationState' in app['status']:
             sync_at = app['status']['operationState'].get('finishedAt', 'N/A')
         else:
@@ -70,7 +69,6 @@ def extract_app_info(app):
         return {}
 
 
-
 def main():
     try:
         v1 = initialize_kubernetes_client()
@@ -91,17 +89,24 @@ def main():
             apps = fetch_argo_cd_applications(v1)
             for app in apps:
                 info = extract_app_info(app)
-                key = tuple(info.values())  # Create a unique key for each application
+                if not info:
+                    continue  # If info extraction failed, skip this app.
 
-                if key not in app_metrics:
-                    app_metrics[key] = app_info.labels(**info)
-                app_metrics[key].set(1)
+                # Create a unique key based on 'namespace' and 'name' only.
+                unique_key = (info["namespace"], info["name"])
+
+                # If we haven't seen this unique combination of 'namespace' and 'name' before,
+                # create a new entry in the dictionary.
+                if unique_key not in app_metrics:
+                    app_metrics[unique_key] = app_info.labels(**info)
+
+                app_metrics[unique_key].set(1)  # Set or update the metric.
+
             logging.info(f'Updated metrics for {len(apps)} applications.')
             time.sleep(polling_interval)
 
     except Exception as e:
         logging.error(f'Error occurred: {e}')
-
 
 
 if __name__ == '__main__':
