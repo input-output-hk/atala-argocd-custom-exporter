@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: bakithesnake/argocd-custom-exporter
+  repository: ghcr.io/input-output-hk/atala-argocd-custom-exporter
 #  tag: 0.1.0 Override it
 
 
