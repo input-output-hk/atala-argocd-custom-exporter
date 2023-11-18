@@ -24,3 +24,7 @@ spec:
         env:
         - name: POLL_INTERVAL
           value: "{{ .Values.pollInterval }}"
+      { { - with .Values.image.PullSecrets } }
+      imagePullSecrets:
+        { { - toYaml . | nindent 8 } }
+      { { - end } }

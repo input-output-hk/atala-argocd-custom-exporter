@@ -2,6 +2,7 @@ replicaCount: 1
 
 image:
   repository: ghcr.io/input-output-hk/atala-argocd-custom-exporter
+  PullSecrets: []
 #  tag: 0.1.0 Override it
 
 
